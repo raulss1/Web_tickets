@@ -25,6 +25,13 @@ export class HttpService {
     this.http.post(api_url, body);
   }
 
+  refreshToken(token:string){
+    const api_url = this.api_provider + "refresh/";
+    const body = {token:token}
+
+    this.http.post(api_url, body)
+  }
+
   getTicketInfo(ticket:File): Observable<Ticket>{
     const api_url = this.api_provider + "tickets/";
     const formData = new FormData();
