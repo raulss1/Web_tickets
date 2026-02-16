@@ -1,0 +1,99 @@
+/* --- Variables de Colores --- */
+:host {
+  --bg-gradient-start: #3E0057; /* Morado oscuro */
+  --bg-gradient-end: #0E001C;   /* Casi negro */
+  --text-color: #ffffff;
+  --brand-cyan: #00f2ff;        /* El color de DataTicket */
+  --divider-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Contenedor Principal */
+.main-header {
+  display: flex;
+  justify-content: space-between; /* Separa izquierda y derecha al máximo */
+  align-items: center;            /* Centra verticalmente */
+  padding: 0 2rem;                /* Espacio a los lados */
+  height: 70px;
+  
+  /* Fondo Degradado */
+  background: linear-gradient(90deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+  color: var(--text-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra elegante abajo */
+}
+
+/* --- Sección Izquierda (Logo) --- */
+.left-section{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.brand-name {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800; /* Letra muy gruesa */
+  color: var(--brand-cyan);
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* --- Sección Derecha (Iconos y Usuario) --- */
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 100%;
+}
+
+/* Grupo de Iconos */
+.action-icons {
+  display: flex;
+  gap: 15px; /* Espacio entre Mail y Settings */
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+
+.icon-btn:hover {
+  opacity: 0.7; /* Efecto al pasar el ratón */
+}
+
+/* Línea Divisoria Vertical */
+.divider {
+  width: 1px;
+  height: 100%;
+  background-color: #ffffff;
+}
+
+/* Perfil de Usuario */
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Espacio entre Nombre y Foto */
+}
+
+.user-name {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.avatar-circle {
+  width: 40px;
+  height: 40px;
+  background-color: #e0e0e0; /* Color de fondo del círculo */
+  color: #333;               /* Color del icono dentro */
+  border-radius: 50%;        /* Hace que sea redondo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.2); /* Borde sutil alrededor */
+}

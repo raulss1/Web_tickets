@@ -1,11 +1,17 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
-export class Header {
+export class HeaderComponent {
+
+  userName: string = "Jhon"
+
+  logoPicture: string | null = null;
+  profilePicture: string | null = null;
 
 }

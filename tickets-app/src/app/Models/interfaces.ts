@@ -1,3 +1,5 @@
+import { Signal } from "@angular/core";
+
 export interface Ticket{
     'id': number, 
     'image': string, 
@@ -8,4 +10,18 @@ export interface Ticket{
     'base_amount': number,
     'cif': string,
     'invoice_number': string,
+}
+
+export interface User{
+    accessToken: string, 
+    refreshToken: string,
+    email: string,
+    username: string,
+    firstName: string,
+    lastName: string,
+}
+
+export interface JWToken{
+    accessToken: string,
+    refreshToken: string,
 }

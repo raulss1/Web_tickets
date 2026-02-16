@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Ticket } from '../../Models/interfaces';
+import { JWToken, Ticket, User } from '../../Models/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -11,25 +11,25 @@ export class HttpService {
   
   constructor(private http: HttpClient){}
 
-  register(username:string, password1:string, password2:string, email:string, name:string, lastname:string){
+  register(username:string, password1:string, password2:string, email:string, name:string, lastname:string): Observable<User>{
       const api_url = this.api_provider + "registration/";
       const body = {username:username, password1:password1, password2:password2, email:email, name:name, lastname:lastname}
 
-      this.http.post(api_url, body)
+      return this.http.post<User>(api_url, body)
   }
 
-  login(name:string, password:string){
+  login(name:string, password:string): Observable<User>{
     const api_url = this.api_provider + "authentication/login/";
     const body = {username: name, password: password};
 
-    this.http.post(api_url, body);
+    return this.http.post<User>(api_url, body);
   }
 
-  refreshToken(token:string){
-    const api_url = this.api_provider + "refresh/";
+  refreshToken(token:string): Observable<JWToken>{
+    const api_url = this.api_provider + "token/refresh/";
     const body = {token:token}
 
-    this.http.post(api_url, body)
+    return this.http.post<JWToken>(api_url, body)
   }
 
   getTicketInfo(ticket:File): Observable<Ticket>{
