@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, tap } from 'rxjs';
 import { Ticket, UserData } from '../../Models/interfaces';
+import Cookies from 'js-cookie';
 
 // Definimos una interfaz auxiliar para la respuesta del Login de dj-rest-auth
 // Normalmente devuelve: { key: '...', user: { ... } } o tokens + user
@@ -33,7 +34,7 @@ export class HttpService {
         password1, 
         password2, 
         email, 
-        first_name: name, // Django suele usar first_name/last_name por defecto
+        first_name: name, 
         last_name: lastname
       };
 
@@ -73,9 +74,15 @@ export class HttpService {
     
     formData.append('image', ticket);
 
-    // CRUCIAL: withCredentials: true
-    // Sin esto, Django no sabrá quién está subiendo la foto y dará error 401
-    return this.http.post<Ticket>(api_url, formData, { withCredentials: true });
+    const csrfToken = Cookies.get('csrftoken'); 
+
+    // 2. Lo añadimos a las cabeceras
+    return this.http.post<Ticket>(api_url, formData, { 
+        withCredentials: true,
+        headers: {
+            'X-CSRFToken': csrfToken || '' 
+        }
+    });
   }
 
   // --- REFRESH TOKEN (VERSIÓN COOKIES) ---
