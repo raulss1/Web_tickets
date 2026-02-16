@@ -12,16 +12,9 @@ export interface Ticket{
     'invoice_number': string,
 }
 
-export interface User{
-    accessToken: string, 
-    refreshToken: string,
+export interface UserData{
     email: string,
     username: string,
     firstName: string,
     lastName: string,
-}
-
-export interface JWToken{
-    accessToken: string,
-    refreshToken: string,
 }

@@ -1,0 +1,77 @@
+/* Variables para mantener consistencia */
+:host {
+  --bg-color: #1F0137;     /* Tu color de fondo */
+  --text-white: #ffffff;
+  --text-active: #00f2ff;  /* El color Cyan de tu diseño */
+  --hover-bg: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar {
+  width: 15%;
+  height: 100vh;
+  background-color: var(--bg-color);
+  /*padding-top: 20px; Añadir esto si se quiere un margen por la parte de arriba entre el menú y el header*/
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Estilo de cada botón del menú */
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Esto empuja la flecha a la derecha del todo */
+  padding: 15px 25px;
+  text-decoration: none;          /* Quita el subrayado de los links */
+  color: var(--text-white);
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Línea separadora sutil */
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Grupo Izquierdo (Icono + Texto) */
+.item-left {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Espacio entre el icono y el texto */
+}
+
+/* Estilo de los iconos */
+.menu-icon {
+  stroke: var(--text-white);
+  transition: stroke 0.3s ease;
+}
+
+.chevron {
+  opacity: 0.7;
+}
+
+/* --- ESTADOS (Hover y Active) --- */
+
+.menu-item:hover {
+  background-color: var(--hover-bg);
+}
+
+/* Clase ACTIVE: Se aplica automáticamente por Angular cuando estás en la ruta */
+.menu-item.active {
+  color: var(--text-active); /* Texto Cyan */
+  border-bottom: 1px solid var(--text-active); /* Borde inferior Cyan (como en la foto) */
+  background: linear-gradient(90deg, rgba(0, 242, 255, 0.05) 0%, transparent 100%); /* Pequeño brillo opcional */
+}
+
+.menu-item.active .menu-icon {
+  stroke: var(--text-active); /* Icono se vuelve Cyan */
+}
+
+.menu-item.active .chevron {
+  stroke: var(--text-active); /* Flecha se vuelve Cyan */
+  opacity: 1;
+}

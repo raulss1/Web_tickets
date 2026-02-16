@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { HttpService } from '../../Services/Http/http-service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,19 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
-  userName: string = "Jhon"
+  userName: string = ''; 
+
+  constructor(private httpService: HttpService) { }
+
+  ngOnInit() {
+    this.httpService.currentUser$.subscribe(usuario => {
+      if (usuario) {
+        this.userName = usuario.username; // O usuario.name
+      } else {
+        this.userName = ''; // Si no hay usuario (logout)
+      }
+    });
+  }
 
   logoPicture: string | null = null;
   profilePicture: string | null = null;
