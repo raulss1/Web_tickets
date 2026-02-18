@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, ChangeDetectorRef } from '@angular/core';
 import { HeaderComponent } from '../../Components/header/header';
 import { MenuComponent } from '../../Components/menu/menu';
 import { HttpService } from '../../Services/Http/http-service';
@@ -18,7 +18,7 @@ export class TicketExtractPage {
   isLoading: boolean = false;
   ticketResult: Ticket | null = null;
 
-  constructor(private http: HttpService) {}
+  constructor(private http: HttpService, private cdr: ChangeDetectorRef) {}
 
   // 1. Maneja la selección del archivo
   onFileSelected(event: any) {
@@ -30,6 +30,7 @@ export class TicketExtractPage {
       const reader = new FileReader();
       reader.onload = () => {
         this.imagePreview = reader.result;
+        this.cdr.detectChanges();
       };
       reader.readAsDataURL(file);
     }
@@ -44,6 +45,8 @@ export class TicketExtractPage {
       next: (res) => {
         this.ticketResult = res;
         this.isLoading = false;
+
+        this.cdr.detectChanges();
       },
       error: (err) => {
         console.error('Error subiendo ticket:', err);

@@ -35,6 +35,7 @@
   color: var(--brand-cyan);
   margin: 0;
   letter-spacing: 0.5px;
+  cursor: pointer;
 }
 
 /* --- Sección Derecha (Iconos y Usuario) --- */

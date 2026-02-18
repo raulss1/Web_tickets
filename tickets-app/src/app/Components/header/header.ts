@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { HttpService } from '../../Services/Http/http-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,7 @@ export class HeaderComponent {
 
   userName: string = ''; 
 
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService, private router: Router) { }
 
   ngOnInit() {
     this.httpService.currentUser$.subscribe(usuario => {
@@ -27,4 +28,7 @@ export class HeaderComponent {
   logoPicture: string | null = null;
   profilePicture: string | null = null;
 
+  goToHome(){
+    this.router.navigate(['/dashboard'])
+  }
 }

@@ -70,10 +70,20 @@
                     <input type="text" [value]="ticketResult.cif || 'No detectado'" 
                            [class.missing-data]="!ticketResult.cif" readonly>
                 </div>
-                 <div class="data-row">
+                <div class="data-row">
                     <label>Nº Factura:</label>
                     <input type="text" [value]="ticketResult.invoice_number || 'No detectado'" 
                            [class.missing-data]="!ticketResult.invoice_number" readonly>
+                </div>
+                <div class="data-row">
+                    <label>Impuesto:</label>
+                    <input type="text" [value]="ticketResult.igic || 'No detectado'" 
+                           [class.missing-data]="!ticketResult.igic" readonly>
+                </div>
+                 <div class="data-row">
+                    <label>Base Imponible:</label>
+                    <input type="text" [value]="ticketResult.base_amount || 'No detectado'" 
+                           [class.missing-data]="!ticketResult.base_amount" readonly>
                 </div>
             </div>
 
