@@ -17,7 +17,6 @@ interface LoginResponse {
 })
 export class HttpService {
   
-  // Asegúrate de que esta URL base termine en /
   private api_provider = "http://127.0.0.1:8000/api/";
 
   // Inicializamos el estado leyendo del localStorage
@@ -26,9 +25,8 @@ export class HttpService {
   
   constructor(private http: HttpClient){}
 
-  // --- REGISTRO ---
   register(username:string, password1:string, password2:string, email:string, name:string, lastname:string): Observable<LoginResponse>{
-      const api_url = `${this.api_provider}registration/`; // Template literals son más limpios
+      const api_url = `${this.api_provider}registration/`;
       const body = {
         username, 
         password1, 
@@ -48,7 +46,6 @@ export class HttpService {
         )
   }
 
-  // --- LOGIN ---
   login(username:string, password:string): Observable<LoginResponse>{
     const api_url = `${this.api_provider}authentication/login/`;
     const body = { username, password };
@@ -63,7 +60,6 @@ export class HttpService {
       );
   }
 
-  // --- SUBIR TICKET ---
   getTicketInfo(ticket: File): Observable<Ticket>{
     const api_url = `${this.api_provider}tickets/`;
     const formData = new FormData();
@@ -83,23 +79,27 @@ export class HttpService {
   getAllUserTickets(): Observable<Ticket>{
     const api_url = `${this.api_provider}my-tickets/`;
 
-    return this.http.get<Ticket>(api_url, {withCredentials: true})
+    return this.http.get<Ticket>(api_url, {withCredentials: true});
   }
 
   getUserTicket(ticket_id: number): Observable<Ticket>{
     const api_url = `${this.api_provider}my-tickets/ticketdetail/${ticket_id}`;
 
-    return this.http.get<Ticket>(api_url, {withCredentials: true})
+    return this.http.get<Ticket>(api_url, {withCredentials: true});
   }
 
-  // --- REFRESH TOKEN ---
+  getUserInfo(): Observable<UserData>{
+    const api_url = `${this.api_provider}authentication/userdetails/`;
+
+    return this.http.get<UserData>(api_url, {withCredentials: true});
+  }
+
   refreshToken() {
     const api_url = `${this.api_provider}token/refresh/`;
     
     return this.http.post(api_url, {}, { withCredentials: true });
   }
 
-  // --- LOGOUT ---
   logout() {
     const api_url = `${this.api_provider}authentication/logout/`;
 
@@ -111,13 +111,10 @@ export class HttpService {
       );
   }
 
-  // --- GETTERS PÚBLICOS DEL ESTADO ---
-  // Un helper útil para saber el valor actual sin suscribirse
+  // saber el valor actual del usuario sin suscribirse
   public get currentUserValue(): UserData | null {
     return this.currentUserSubject.value;
   }
-
-  // --- MÉTODOS PRIVADOS DE ALMACENAMIENTO ---
 
   private saveUserToStorage(user: UserData) {
     localStorage.setItem('user_data', JSON.stringify(user));

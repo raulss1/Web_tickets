@@ -5,6 +5,7 @@ import { RegisterPage } from './Pages/register/register';
 import { TicketExtractPage } from './Pages/ticket-extract/ticket-extract';
 import { HistoryPage } from './Pages/history/history';
 import { TicketNumPage } from './Pages/ticket-num/ticket-num';
+import { PerfilPage } from './Pages/perfil/perfil';
 
 export const routes: Routes = [
     {path: '', component: LoginPage},
@@ -12,5 +13,6 @@ export const routes: Routes = [
     {path: 'dashboard', component: HomePage},
     {path: 'ticket', component: TicketExtractPage},
     {path: 'history', component: HistoryPage},
-    {path: 'ticket/:id', component: TicketNumPage}
+    {path: 'ticket/:id', component: TicketNumPage},
+    {path: 'perfil', component: PerfilPage},
 ];

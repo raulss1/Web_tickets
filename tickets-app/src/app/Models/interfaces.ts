@@ -1,4 +1,5 @@
 import { Signal } from "@angular/core";
+import { NumberValueAccessor } from "@angular/forms";
 
 export interface Ticket{
     id: number, 
@@ -13,6 +14,7 @@ export interface Ticket{
 }
 
 export interface UserData{
+    id: number,
     email: string,
     username: string,
     firstName: string,
