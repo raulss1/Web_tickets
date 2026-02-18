@@ -38,7 +38,6 @@ export class HttpService {
         last_name: lastname
       };
 
-      // Importante: withCredentials para que si el registro loguea automáticamente, guarde la cookie
       return this.http.post<LoginResponse>(api_url, body, { withCredentials: true })
         .pipe(
           tap((response) => {
@@ -49,17 +48,14 @@ export class HttpService {
         )
   }
 
-  // --- LOGIN (CORREGIDO) ---
+  // --- LOGIN ---
   login(username:string, password:string): Observable<LoginResponse>{
     const api_url = `${this.api_provider}authentication/login/`;
     const body = { username, password };
 
-    // Usamos .pipe(tap(...))
-    // Esto significa: "Haz la petición y SI sale bien, ejecuta este código antes de devolver los datos al componente"
     return this.http.post<LoginResponse>(api_url, body, { withCredentials: true })
       .pipe(
         tap((response) => {
-          // Aquí capturamos al usuario REAL que viene del backend
           if (response.user) {
             this.saveUserToStorage(response.user);
           }
@@ -67,7 +63,7 @@ export class HttpService {
       );
   }
 
-  // --- SUBIR TICKET (CORREGIDO) ---
+  // --- SUBIR TICKET ---
   getTicketInfo(ticket: File): Observable<Ticket>{
     const api_url = `${this.api_provider}tickets/`;
     const formData = new FormData();
@@ -76,7 +72,6 @@ export class HttpService {
 
     const csrfToken = Cookies.get('csrftoken'); 
 
-    // 2. Lo añadimos a las cabeceras
     return this.http.post<Ticket>(api_url, formData, { 
         withCredentials: true,
         headers: {
@@ -85,18 +80,27 @@ export class HttpService {
     });
   }
 
-  // --- REFRESH TOKEN (VERSIÓN COOKIES) ---
+  getAllUserTickets(): Observable<Ticket>{
+    const api_url = `${this.api_provider}my-tickets/`;
+
+    return this.http.get<Ticket>(api_url, {withCredentials: true})
+  }
+
+  getUserTicket(ticket_id: number): Observable<Ticket>{
+    const api_url = `${this.api_provider}my-tickets/ticketdetail/${ticket_id}`;
+
+    return this.http.get<Ticket>(api_url, {withCredentials: true})
+  }
+
+  // --- REFRESH TOKEN ---
   refreshToken() {
     const api_url = `${this.api_provider}token/refresh/`;
     
-    // No enviamos nada en el body ({}) ni pasamos argumentos.
-    // La magia la hace 'withCredentials: true', que envía la cookie 'jwt-refresh-token'
     return this.http.post(api_url, {}, { withCredentials: true });
   }
 
   // --- LOGOUT ---
   logout() {
-    // Corregido el typo "logut" -> "logout"
     const api_url = `${this.api_provider}authentication/logout/`;
 
     return this.http.post(api_url, {}, { withCredentials: true })

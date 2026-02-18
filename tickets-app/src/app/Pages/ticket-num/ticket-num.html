@@ -1,0 +1,71 @@
+<app-header></app-header>
+
+<div class="content">
+  <app-menu></app-menu>
+
+  <div class="principal">
+    
+    <div class="upload-container">
+
+      <div class="loading-state" *ngIf="isLoading">
+        <div class="spinner"></div>
+        <p>Cargando Ticket...</p>
+      </div>
+
+      <div class="results-card" *ngIf="ticketResult">
+        <div class="results-header">
+            <h3>Ticket Cargado</h3>
+        </div>
+
+        <div class="results-grid">
+            <div class="ticket-data">
+                <div class="data-row">
+                    <label>Empresa:</label>
+                    <input type="text" [value]="ticketResult.company_name || 'No detectado'" 
+                           [class.missing-data]="!ticketResult.company_name" readonly>
+                </div>
+                <div class="data-row">
+                    <label>Total:</label>
+                    <div class="input-with-symbol">
+                        <input type="text" [value]="ticketResult.total || 'No detectado'" 
+                           [class.missing-data]="!ticketResult.total" readonly class="highlight-input">
+                        <span>€</span>
+                    </div>
+                </div>
+                <div class="data-row">
+                    <label>Fecha:</label>
+                    <input type="text" [value]="ticketResult.date || 'No detectado'" 
+                           [class.missing-data]="!ticketResult.date" readonly>
+                </div>
+                <div class="data-row">
+                    <label>CIF:</label>
+                    <input type="text" [value]="ticketResult.cif || 'No detectado'" 
+                           [class.missing-data]="!ticketResult.cif" readonly>
+                </div>
+                <div class="data-row">
+                    <label>Nº Factura:</label>
+                    <input type="text" [value]="ticketResult.invoice_number || 'No detectado'" 
+                           [class.missing-data]="!ticketResult.invoice_number" readonly>
+                </div>
+                <div class="data-row">
+                    <label>Impuesto:</label>
+                    <input type="text" [value]="ticketResult.igic || 'No detectado'" 
+                           [class.missing-data]="!ticketResult.igic" readonly>
+                </div>
+                 <div class="data-row">
+                    <label>Base Imponible:</label>
+                    <input type="text" [value]="ticketResult.base_amount || 'No detectado'" 
+                           [class.missing-data]="!ticketResult.base_amount" readonly>
+                </div>
+            </div>
+
+            <div class="ticket-image-final">
+                <p>Imagen Analizada:</p>
+                <img [src]="ticketResult.image" alt="Ticket Procesado">
+            </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

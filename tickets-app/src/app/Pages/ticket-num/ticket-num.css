@@ -1,0 +1,227 @@
+:host {
+  /* Variables heredadas (asegúrate de que estén disponibles globalmente o defínelas aquí) */
+  --bg-gradient-start: #4D0069;
+  --bg-gradient-end: #0E0019;
+  --text-color: #ffffff;
+  --brand-cyan: #00f2ff;
+  --input-bg: rgba(255, 255, 255, 0.05);
+}
+
+.content {
+  display: flex;
+  height: calc(100vh - 70px); /* Restamos la altura del header */
+  overflow: hidden; /* Evita scrolls dobles */
+}
+
+.principal {
+  flex: 1; /* Ocupa todo el espacio restante a la derecha del menú */
+  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+  padding: 40px;
+  overflow-y: auto; /* Permite scroll solo en el contenido si es muy largo */
+  color: var(--text-color);
+  display: flex;
+  justify-content: center; /* Centra la tarjeta horizontalmente */
+  align-items: flex-start;
+}
+
+.upload-container {
+  width: 100%;
+  max-width: 900px;
+}
+
+.page-title {
+  font-family: 'Segoe UI', sans-serif;
+  margin-bottom: 30px;
+  font-weight: 300;
+  font-size: 2rem;
+  border-left: 4px solid var(--brand-cyan);
+  padding-left: 15px;
+}
+
+/* --- TARJETA DE SUBIDA --- */
+.upload-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.drop-area {
+  background: var(--input-bg);
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.drop-area:hover {
+  border-color: var(--brand-cyan);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.upload-icon {
+  stroke: var(--brand-cyan);
+  margin-bottom: 15px;
+}
+
+.file-types {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 10px;
+}
+
+/* Imagen Previa */
+.preview-container {
+  text-align: center;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-preview {
+  max-height: 220px;
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.change-file-text {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: var(--brand-cyan);
+}
+
+/* --- BOTONES --- */
+.btn-primary {
+  background-color: var(--brand-cyan);
+  color: #0E0019;
+  border: none;
+  padding: 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.2s;
+}
+
+.btn-primary:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+  color: #aaa;
+}
+
+.btn-primary:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid var(--brand-cyan);
+    color: var(--brand-cyan);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* --- LOADING SPINNER --- */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-left-color: var(--brand-cyan);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* --- RESULTADOS --- */
+.results-card {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 15px;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas */
+    gap: 40px;
+}
+
+/* Inputs de resultado (Solo lectura) */
+.data-row {
+    margin-bottom: 15px;
+}
+
+.data-row label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+}
+
+.data-row input {
+    width: 100%;
+    background: var(--input-bg);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 10px;
+    color: white;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.highlight-input {
+    color: var(--brand-cyan) !important;
+    font-weight: bold;
+    font-size: 1.2rem !important;
+}
+
+.input-with-symbol {
+    position: relative;
+}
+.input-with-symbol span {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--brand-cyan);
+}
+
+.ticket-image-final img {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--brand-cyan);
+}
