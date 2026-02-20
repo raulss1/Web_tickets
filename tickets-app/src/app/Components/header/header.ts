@@ -18,9 +18,9 @@ export class HeaderComponent {
   ngOnInit() {
     this.httpService.currentUser$.subscribe(usuario => {
       if (usuario) {
-        this.userName = usuario.username; // O usuario.name
+        this.userName = usuario.username;
       } else {
-        this.userName = ''; // Si no hay usuario (logout)
+        this.userName = '';
       }
     });
   }
