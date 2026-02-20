@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class PerfilPage implements OnInit {
 
-  userData: UserData = { id: 0, firstName: '', lastName: '', email: '', username: '' } as any;
+  userData: UserData = { id: 0, first_name: '', last_name: '', email: '', username: '' } as any;
   isLoading: boolean = true;
 
   constructor(private http: HttpService, private cdr: ChangeDetectorRef){}

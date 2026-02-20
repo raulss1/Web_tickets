@@ -15,6 +15,9 @@
       <div class="results-card" *ngIf="ticketResult">
         <div class="results-header">
             <h3>Ticket Cargado</h3>
+            <button class="btn-delete" (click)="deleteTicket()" title="Eliminar ticket">
+                <span class="icon-trash">🗑️</span> Borrar
+            </button>
         </div>
 
         <div class="results-grid">

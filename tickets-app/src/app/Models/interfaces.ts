@@ -2,6 +2,7 @@ import { Signal } from "@angular/core";
 import { NumberValueAccessor } from "@angular/forms";
 
 export interface Ticket{
+    uuid: string,
     id: number, 
     image: string, 
     company_name: string | null; 
@@ -17,6 +18,6 @@ export interface UserData{
     id: number,
     email: string,
     username: string,
-    firstName: string,
-    lastName: string,
+    first_name: string,
+    last_name: string,
 }

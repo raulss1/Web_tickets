@@ -36,7 +36,7 @@ export class HttpService {
         last_name: lastname
       };
 
-      return this.http.post<LoginResponse>(api_url, body, { withCredentials: true })
+      return this.http.post<LoginResponse>(api_url, body)
         .pipe(
           tap((response) => {
             if (response.user){
@@ -82,10 +82,16 @@ export class HttpService {
     return this.http.get<Ticket>(api_url, {withCredentials: true});
   }
 
-  getUserTicket(ticket_id: number): Observable<Ticket>{
-    const api_url = `${this.api_provider}my-tickets/ticketdetail/${ticket_id}`;
+  getUserTicket(ticket_uuid: string): Observable<Ticket>{
+    const api_url = `${this.api_provider}my-tickets/ticketdetail/${ticket_uuid}`;
 
     return this.http.get<Ticket>(api_url, {withCredentials: true});
+  }
+
+  deleteUserTicket(ticket_uuid: string){
+    const api_url = `${this.api_provider}delete/${ticket_uuid}`;
+
+    return this.http.delete(api_url, {withCredentials: true});
   }
 
   getUserInfo(): Observable<UserData>{

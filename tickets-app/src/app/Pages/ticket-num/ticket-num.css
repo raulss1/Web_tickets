@@ -225,3 +225,17 @@
     border-radius: 8px;
     border: 1px solid var(--brand-cyan);
 }
+
+.btn-delete {
+    background: #e10303;
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.btn-delete:hover {
+    background: #e74c3c;
+    color: white;
+}
