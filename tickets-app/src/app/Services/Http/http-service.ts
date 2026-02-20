@@ -32,8 +32,8 @@ export class HttpService {
         password1, 
         password2, 
         email, 
-        first_name: name, 
-        last_name: lastname
+        firstName: name, 
+        lastName: lastname
       };
 
       return this.http.post<LoginResponse>(api_url, body)
@@ -115,6 +115,12 @@ export class HttpService {
           this.removeUserFromStorage();
         })
       );
+  }
+
+  verifyEmail(key: string) {
+    const api_url = `${this.api_provider}registration/verify-email/`;
+
+    return this.http.post(api_url, { key: key });
   }
 
   // saber el valor actual del usuario sin suscribirse

@@ -128,3 +128,45 @@ input:focus {
 .auth-footer a:hover {
   text-decoration: underline;
 }
+
+.text-center {
+  text-align: center;
+}
+
+.status-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 10px;
+  gap: 20px;
+}
+
+.status-title {
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.status-message {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+/* Color azul/cian corporativo para el icono del correo */
+.mail-icon {
+  background: rgba(0, 242, 255, 0.1);
+  color: var(--brand-cyan, #00f2ff);
+  border: 2px solid var(--brand-cyan, #00f2ff);
+}

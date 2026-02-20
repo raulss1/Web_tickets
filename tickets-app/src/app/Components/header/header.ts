@@ -25,7 +25,7 @@ export class HeaderComponent {
     });
   }
 
-  logoPicture: string | null = null;
+  logoPicture = "assets/img/Icono.png"
   profilePicture: string | null = null;
 
 }

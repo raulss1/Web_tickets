@@ -1,0 +1,79 @@
+.text-center {
+  text-align: center;
+}
+
+.status-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  gap: 15px;
+}
+
+.status-title {
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.status-message {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* Iconos de Éxito y Error */
+.icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.success-icon {
+  background: rgba(0, 242, 255, 0.1);
+  color: var(--brand-cyan, #00f2ff);
+  border: 2px solid var(--brand-cyan, #00f2ff);
+}
+
+.error-icon {
+  background: rgba(255, 71, 87, 0.1);
+  color: #ff4757;
+  border: 2px solid #ff4757;
+}
+
+/* Reutilizamos tu botón secundario si ya lo tienes, o lo creamos */
+.btn-secondary {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Spinner animado para la carga */
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-left-color: var(--brand-cyan, #00f2ff);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
